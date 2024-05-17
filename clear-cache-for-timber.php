@@ -62,9 +62,9 @@ function clear_timber_cache_callback() {
  * Timber Clear cache function
  */
 function clear_cache_for_timber_clear_cache() {
-    if (class_exists('Timber\Cache\Cleaner')) {
+    if (class_exists('Timber\Cache\Cleaner') && method_exists('Timber\Cache\Cleaner', 'clear_cache_twig')) {
         return Timber\Cache\Cleaner::clear_cache_twig();
-    }
+    } 
     else if (class_exists('Timber\\Integrations\\Command')) {
         return \Timber\Integrations\Command::clear_cache();
     }
